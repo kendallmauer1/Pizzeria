@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0084ff;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            padding: 12px;
+            background-color: #05009f;
+        }
+
+        nav a {
+            color: #FFF;
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 20px;
+            transition-property: color;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-in-out;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #0084ff;
+        }
+
+        nav a.active {
+            background-color: #05009f;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition-property: background-color;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-in-out;
+        }
+
+        nav a.active:hover,
+        nav a.active:focus {
+            background-color: #05009f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white; font-size: 40px;">Dino's Pizzeria</h1>
+        <p style="color: white; font-size: 20px;">Established in 1998</p>
+        <p style="color: white; font-size: 20px;">Order At: (612) 790-9308</p>
+
+    </header>
+
+    <nav>
+        <a href="{% url 'pizzas:index' %}" class="{% if request.path == '/pizzas/' %}active{% endif %}">Home</a>
+        <a href="{% url 'pizzas:pizzas' %}" class="{% if request.path == '/pizzas/pizzas/' %}active{% endif %}">Pizzas</a>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+</body>
+</html>
